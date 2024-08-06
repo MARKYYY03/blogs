@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author's Blog</title>
+    <link rel="stylesheet" href="gallery.component.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">BLOGS</h1>
+      <div>
+        <button class="btn-settings" (click)="routeToCreateBLog()">
+          Create Blog
+        </button>
+        <button class="btn-settings" (click)="routeToGalleries()">
+          My Post
+        </button>
+        <button class="btn-settings">
+          <a href="#">Logout</a>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container" *ngIf="Blogs.user">
+      <div class="author-section">
+        <div
+          class="author-avatar"
+          [ngStyle]="{
+            'background-image': Blogs.user.avatarUrl
+              ? 'url(' + Blogs.user.avatarUrl + ')'
+              : 'url(https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png)'
+          }"
+        ></div>
+        <div class="author-details">
+          <h2 class="author-name">
+            <b>{{ Blogs.user.username }}</b>
+          </h2>
+          <p class="author-fullname">
+            <b>Fullname :</b> {{ Blogs.user.firstname }}
+            {{ Blogs.user.lastname }}
+          </p>
+          <p class="author-email"><b>Email : </b> {{ Blogs.user.email }}</p>
+        </div>
+      </div>
+
+      <div class="blog-posts" *ngIf="Blogs.blogs && Blogs.blogs.length > 0">
+        <div class="blog-post" *ngFor="let blog of Blogs.blogs">
+          <div class="blog-post-details">
+            <h3 class="blog-post-title">
+              <b>Title: {{ blog.blogTitle }}</b>
+            </h3>
+            <p class="blog-post-summary">{{ blog.blogDesc }}</p>
+            <p class="blog-post-timestamp">
+              {{ blog.timestamp | date : "short" }}
+            </p>
+            <p class="blog-post-user">
+              <b> Post by :</b>
+              {{ Blogs.user.username }} {{ blog.timestamp | date : "short" }}
+            </p>
+            <button (click)="Edit(blog.blogID)" class="button edit-button">
+              Edit
+            </button>
+            <button
+              (click)="deleteBlog(blog.blogID)"
+              class="button delete-button"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" [ngClass]="{ show: isModalOpen }" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeModal()">&times;</span>
+
+        <form [formGroup]="applyForm" (ngSubmit)="editBlog()">
+          <div class="form-outline mb-2">
+            <input
+              type="hidden"
+              formControlName="blogID"
+              value="{{ blogData.blogID }}"
+            />
+            <label for="blogTitle">Blog Title</label>
+            <input
+              formControlName="blogTitle"
+              type="text"
+              value="{{ blogData.blogTitle }}"
+            />
+            <div class="mb-3">
+              <label for="blogDesc" class="form-label">Your Blog</label>
+              <textarea
+                formControlName="blogDesc"
+                class="form-control"
+                value="{{ blogData.blogDesc }}"
+                id="blogDesc"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button (click)="routeToGallery()" class="btn btn-secondary">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

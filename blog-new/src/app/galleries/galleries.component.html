@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image gallery</title>
+    <link rel="stylesheet" href="galleries.component.css" />
+  </head>
+  <body>
+    <nav
+      style="box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2)"
+      class="navbar navbar-expand-lg navbar-light bg-light"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand">My Post</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item"></li>
+          </ul>
+          <form class="d-flex">
+            <ul
+              class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+              style="--bs-scroll-height: 100px"
+            >
+              <li class="nav-item">
+                <a
+                  style="cursor: pointer"
+                  class="nav-link active"
+                  aria-current="page"
+                  (click)="routeToGallery()"
+                  >Back</a
+                >
+              </li>
+              <li>
+                <button class="btn btn-outline-success">
+                  <a
+                    routerLink="/login"
+                    style="text-decoration: none; color: black"
+                    >logout</a
+                  >
+                </button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- <div class="image-grid">
+      <div
+        class="card bg-dark text-white"
+        *ngFor="let img of userImages"
+        (click)="openModal(img)"
+      >
+        <img [src]="baseAPI + img.img" class="card-img" alt="Image" />
+        <div class="card-img-overlay">
+          <h5 class="card-title">by: {{ img.uploaderUsername }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      style="height: 100%; width: 100%"
+      class="modal"
+      [ngClass]="{ show: isModalOpen }"
+      (click)="closeModal()"
+    >
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img [src]="baseAPI + selectedImage?.img" class="modal-image" />
+        <h2>{{ selectedImage?.imgDesc }}</h2>
+        <p class="card-text">
+          Created: {{ selectedImage?.imgTimeStamp | date : "short" }}
+        </p>
+
+        <div class="card">
+          <div class="card-body">
+            <!-- Input -->
+            <div class="d-flex mb-3">
+              <a href="">
+                <img
+                  src="https://i.pinimg.com/736x/e2/1c/a5/e21ca50d5ffaebb7efa22de2b211684d.jpg"
+                  class="border rounded-circle me-2"
+                  alt="Avatar"
+                  style="height: 40px"
+                />
+              </a>
+              <form [formGroup]="applyForm" (ngSubmit)="Insert()">
+                <div data-mdb-input-init class="form-outline">
+                  <textarea
+                    formControlName="commentText"
+                    class="form-control input-comment"
+                    id="textAreaExample"
+                    placeholder="Write your comment.."
+                  ></textarea>
+                  <!-- <label for="textAreaExample" class="form-label">Write a comment</label> -->
+                  <button type="submit" class="btn btn-primary mt-2">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- Input -->
+
+            <!-- Display comments -->
+            <div *ngFor="let comment of selectedImage?.comments; let i = index">
+              <div class="d-flex mb-3">
+                <a href="">
+                  <img
+                    src="https://i.pinimg.com/736x/e2/1c/a5/e21ca50d5ffaebb7efa22de2b211684d.jpg"
+                    class="border rounded-circle me-2"
+                    alt="Avatar"
+                    style="height: 40px"
+                  />
+                </a>
+                <div>
+                  <div class="bg-body-tertiary rounded-3 px-3 py-1">
+                    <a href="" class="text-dark mb-0">
+                      <strong>{{
+                        selectedImage?.commenterUsernames[i]
+                      }}</strong>
+                    </a>
+                    <a href="" class="text-muted d-block">
+                      <small>{{ comment }}</small>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Display comments -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

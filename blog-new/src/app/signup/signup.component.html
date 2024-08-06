@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.component.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="registration form">
+        <header>Signup</header>
+        <form novalidate [formGroup]="applyForm" (ngSubmit)="Signup()">
+          <div class="form-row">
+            <input
+              formControlName="firstname"
+              type="text"
+              placeholder="First name"
+            />
+          </div>
+          <div class="form-row">
+            <input
+              formControlName="lastname"
+              type="text"
+              placeholder="Last name"
+            />
+          </div>
+          <div class="form-row">
+            <input formControlName="email" type="email" placeholder="Email" />
+          </div>
+          <div class="form-row">
+            <input
+              formControlName="username"
+              type="text"
+              placeholder="Username"
+            />
+          </div>
+          <div class="form-row">
+            <input
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-row">
+            <input
+              formControlName="confirmPassword"
+              type="password"
+              placeholder="Confirm password"
+            />
+          </div>
+          <div class="checkbox">
+            <input
+              formControlName="agreeTerms"
+              type="checkbox"
+              id="agreeTerms"
+            />
+            <label for="agreeTerms">I agree to the Terms and Conditions</label>
+          </div>
+          <button type="submit" class="button">Sign Up</button>
+        </form>
+
+        <div class="signup">
+          <span class="signup"
+            >Already have an account?
+            <label for="check"><a routerLink="/login">Login</a></label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="path/to/global:scripts.js"></script>
+  </body>
+</html>

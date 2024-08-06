@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Author Dashboard</title>
+  <link rel="stylesheet" href="dashboard.component.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="logo">BlogName Dashboard</a>
+    <button class="btn-settings">Settings</button>
+  </nav>
+
+  <div class="container">
+    <h1>Author Dashboard</h1>
+
+    <!-- Form for Author Information -->
+    <form class="author-form">
+      <h2>Edit Author Information</h2>
+      <label for="author-name">Author Name:</label>
+      <input type="text" id="author-name" name="author-name" placeholder="Enter author name" required>
+
+      <label for="contact-number">Contact Number:</label>
+      <input type="tel" id="contact-number" name="contact-number" placeholder="Enter contact number">
+
+      <label for="socials">Socials:</label>
+      <input type="text" id="socials" name="socials" placeholder="Enter social media links">
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" placeholder="Enter age">
+
+      <label for="birthday">Birthday:</label>
+      <input type="text" id="birthday" name="birthday" placeholder="Enter birthday">
+
+      <label for="zodiac-sign">Zodiac Sign:</label>
+      <input type="text" id="zodiac-sign" name="zodiac-sign" placeholder="Enter zodiac sign">
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" placeholder="Enter city">
+
+      <label for="favorite-hobby">Favorite Hobby:</label>
+      <input type="text" id="favorite-hobby" name="favorite-hobby" placeholder="Enter favorite hobby">
+
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <!-- Form for Uploading Blog Posts -->
+    <form class="blog-post-form">
+      <h2>Upload Blog Post</h2>
+      <label for="blog-image">Blog Post Image:</label>
+      <input type="file" id="blog-image" name="blog-image" accept="image/*" required>
+
+      <label for="blog-title">Blog Post Title:</label>
+      <input type="text" id="blog-title" name="blog-title" placeholder="Enter blog post title" required>
+
+      <label for="blog-summary">Blog Post Summary:</label>
+      <textarea id="blog-summary" name="blog-summary" rows="4" placeholder="Enter blog post summary"></textarea>
+
+      <label for="blog-link">Blog Post Link:</label>
+      <input type="url" id="blog-link" name="blog-link" placeholder="Enter blog post link">
+
+      <button type="submit">Upload Blog Post</button>
+    </form>
+  </div>
+</body>
+</html>
